@@ -1,6 +1,22 @@
 <div>
+    <h1>Tasks</h1>
+</div>
+
+<div>
     <ul>
         {{#each tasks}}
-        {{log tasks}}
+                
+       <li>{{title}}----{{description}}
+           <input type="checkbox" checked={{status}}>
+           <form action="/task/{{_id}}?_method=DELETE" method="POST">
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit">Delete</button>
+           </form>
+       </li> 
+       {{/each}}
     </ul>
+</div>
+
+<div>
+    {{>navigation}}
 </div>

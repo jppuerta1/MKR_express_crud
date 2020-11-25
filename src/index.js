@@ -2,6 +2,8 @@ const express=require('express')
 const routes = require('./routes/routes')
 const path = require ('path')//da las rutas relativas donde esté cualquier archivo
 const hbs = require ('express-handlebars')
+const morgan = require('morgan')
+const methodOverride = require ('method-override')
 
 
 const app = express()
@@ -21,6 +23,8 @@ app.set('view engine','.hbs')
 
 // middlewares
 app.use(express.urlencoded({extended:true}))//cuando enviamos un body se decodifique en el objeto y lo devuelve en el name del html
+app.use(methodOverride('_method'))
+app.use(morgan('dev'))
 
 //routes
 app.use(routes)
